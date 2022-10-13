@@ -15,4 +15,5 @@ public class PostResDto {
     private Long categoryId;
     private String createAt;
     private String updateAt;
+
 }

@@ -30,8 +30,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional
-	public User create(User user) {
-		return userRepository.save(user);
+	public void create(User user) {
+		userRepository.save(user);
 	}
 
 	@Cacheable(cacheNames = "user", key = "#id")

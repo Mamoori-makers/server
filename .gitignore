@@ -7,7 +7,7 @@ build/
 
 
 ### DB ###
-src/main/resources/application*.yaml
+src/main/resoubrerces/application*.yaml
 src/main/resources/application*.yml
 
 
