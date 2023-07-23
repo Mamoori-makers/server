@@ -16,6 +16,7 @@ spring:
         #        show_sql: true  # System.out에 Hibernate 실행 SQL 남기기
         format_sql: true
 
+
 logging:
   level:
     org.hibernate.SQL: debug  # logger를 통해 Hibernate 실행 SQL 남기기
@@ -26,3 +27,5 @@ jasypt:
 jwt:
   # base64로 인코딩된 암호 키, HS512 사용하므로 512bit=64byte 이상의 문자
   secretKey: ${KEY_JWT}
+server:
+  port: 5000

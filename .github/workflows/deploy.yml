@@ -3,18 +3,23 @@ on:
   push:
     branches:
       - release # release branch에 push가 될 때 CD가 일어나도록 설정
+  pull_request:
+    branches:
+      - release
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up JDK 11
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           java-version: '11'
+          token: ${{ secrets.auth }}
+          distribution: 'temurin'
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
@@ -45,8 +50,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: mamoori-server
-          environment_name: Mamoori-server-env
+          application_name: mamoori-application
+          environment_name: Mamoori-application-env
           version_label: github-action-${{steps.current-time.outputs.formattedTime}} # timestamp 이용하여 배포 버전 구분
-          region: us-east-2
-          deployment_package: deploy.zip
+          region: ap-northeast-2
+          deployment_package: deploy/deploy.zip

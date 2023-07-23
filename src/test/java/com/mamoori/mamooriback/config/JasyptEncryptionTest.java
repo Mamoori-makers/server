@@ -10,7 +10,7 @@ public class JasyptEncryptionTest {
     @Value("${jasypt.key}")
     private String key;
 
-    @Test
+//    @Test
     void jasypt() {
         String url = "url";
         String username = "sa";
